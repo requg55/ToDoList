@@ -15,7 +15,7 @@ struct task {
     var desc = "Un-Described"
 }
 
-class TaskManager: NSObject {
+class TaskManager {
 
     var tasks = [task]()
     
