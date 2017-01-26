@@ -1,14 +1,6 @@
-//
-//  ViewController.swift
-//  ToDoList
-//
-//  Created by Александр Челмакин on 26.01.17.
-//  Copyright © 2017 Александр Челмакин. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +11,19 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    //DataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return taskMrg.tasks.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell: UITableViewCell = UITableViewCell (style: UITableViewCellStyle.subtitle, reuseIdentifier: "Default")
+        cell.textLabel?.text = taskMrg.tasks[indexPath.row].name
+        cell.detailTextLabel?.text = taskMrg.tasks[indexPath.row].desc
+        return cell
+    }
 }
+
 
